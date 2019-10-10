@@ -1,0 +1,57 @@
+body {
+  background-color:black;
+  color: white;
+}
+.Maimouna{
+  background-color:blue;
+  text-align: center;
+}
+.Maimouna h1 {
+  color: yellow;
+}
+.container {
+  margin: auto;
+  width: 60%;
+  text-align: center;
+}
+
+.information {
+  margin: auto;
+  width: 45%;
+  text-align: center;
+  font-style: oblique;
+  border: 5px solid white;
+  bottom: 50px;
+}
+h2 {
+  text-align: center;
+  font-size: 40px;
+  color: red;
+}
+.service {
+  border: 5px solid black;
+}
+ul {
+  margin-left: 40px;
+  list-style-type: lower-roman;
+  text-align: left;
+  list-style-type: square;
+
+}
+li {
+  list-style-type: upper-alpha;
+}
+
+#me {
+  height: 200px;
+  width: 200px;
+  top: 50%;
+  right: 50%;
+
+
+
+}
+/* .allmight {
+  width: 400px;
+  height: 600px;
+ } */
