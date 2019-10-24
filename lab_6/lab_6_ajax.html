@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>Test AJAX page</title>
+  <link rel="stylesheet" type="text/css" href="./lab_styles.css">
+</head>
+
+<body>
+  <div class="container">
+    <div class="wrapper">
+      <div class="header">Test AJAX page</div>
+      <button class="button" onclick="loadData()">Load Some JSON</button>
+      <div class="content"><ol class="instructions"></ol></div>
+      <div class="footer"></div>
+    </div>
+  </div>
+  <script>
+    function loadData() {
+      fetch('ajax_sample.json')
+        .then(res => res.json())
+        .then(res => {
+            //retrieve a value by the key from sessionstorage// 
+            // const list = JSON.parse(res) //parse it back to javascript//
+
+            /*I wanted to know if I could you this to retrieve a vallue
+              const str = sessionStorage.getItem("contries_arr");
+              const json = JSON.parse(str)*/
+
+            //4. set array to an appropriate variable//
+            //const res = list.map((i) => i.name) //applys function to each element in the list, similar to a for loop just in the mapping function //
+            //console log it to check what it says but its sotring the list in nameArray variable//
+
+            // calls the html instructions and stores it into a variable called instructions//
+            const instructions = document.querySelector('.instructions');
+            instructions.innerHTML = '';
+            //let ol = document.createElement("ol")//
+            //5.loop through the variable and 8. limit the number of countries listed to fifty//
+            //i is a list item - i.name is what is wanted in here return only the names//
+            for (let i = 0; i < 15; i++) {
+                const selectNumber = getRandomIntInclusive(0, 242);
+
+                //6. replace the supplied list entries wth country names//
+                let el = document.createElement("li");
+
+                //7. Change the list to a numbered list//
+                el.innerText = res[selectNumber].code + " " + res[selectNumber].name;
+
+                instructions.appendChild(el);
+            };
+
+        })
+        }
+
+        //9. Randomize which fifty countries are dislayed on load//
+        function getRandomIntInclusive(min, max) {
+            min = Math.ceil(min);
+            max = Math.floor(max);
+            return Math.floor(Math.random() * (max - min + 1)) + min;
+        }
+        
+
+
+
+
+    //}//
+  </script>
+</body>
+
+</html>
