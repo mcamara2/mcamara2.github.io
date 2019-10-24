@@ -10,10 +10,10 @@
   <div class="container">
     <div class="wrapper">
       <div class="header">Test JSON page</div>
-      <!-- <button class="button" onclick="loadData()">Load Some JSON</button> -->
-      <button class="button" onclick="console.log('You haven\'t written a function yet!');">Click me to replace list entries</button>
+      <button class="button" onclick="loadData()">Load Some JSON</button>
+      <!-- <button class="button" onclick="console.log('You haven\'t written a function yet!');">Click me to replace list entries</button> -->
       <div class="content">
-        <ul class="instructions">
+        <ol class="instructions">
           <li>Delete and re-clone the class repository</li>
           <li>Open <span class="code">lab_5_json.html</span> in your browser</li>
           <li>Open your developer tools and look at the logged data</li>
@@ -26,7 +26,7 @@
               <li>Randomize which fifty countries are displayed on load</li>
             </ol>
           </li>
-        </ul>
+        </ol>
       </div>
       <div class="footer"></div>
     </div>
@@ -278,7 +278,53 @@
       { "name": "Zambia", "code": "ZM" },
       { "name": "Zimbabwe", "code": "ZW" }
     ]
-    console.log("List of countries in the world", countries);
+    //console.log("List of countries in the world", countries);//
+    //1.store countries code in your session, by calling the command im converting javascript into json and storing it in the browser//
+    sessionStorage.setItem('countries_arr', JSON.stringify(countries)); //make the code JSON code 'countries_arr' a string
+
+    //2. and 3.  at the click of the supplied button, retrieve country code from the session//
+    function loadData() { //button function, similar to the clickme function, does the same thing
+      const json = sessionStorage.getItem('countries_arr');
+       //retrieve a value by the key from sessionstorage// 
+      const list = JSON.parse(json) //parse it back to javascript//
+
+      /*I wanted to know if I could you this to retrieve a vallue
+        const str = sessionStorage.getItem("contries_arr");
+        const json = JSON.parse(str)*/
+    
+    //4. set array to an appropriate variable//
+      const nameArray = list.map((i) => i.name) //applys function to each element in the list, similar to a for loop just in the mapping function 
+      //console log it to check what it says but its sotring the list in nameArray variable//
+       
+      // calls the html instructions and stores it into a variable called instructions//
+     const instructions = document.querySelector('.instructions');
+     instructions.innerHTML = '';
+
+      //5.loop through the variable and 8. limit the number of countries listed to fifty//
+      //i is a list item - i.name is what is wanted in here return only the names//
+     for(let i = 0; i < 50; i ++){   
+       const selectNumber = getRandomIntInclusive(0, 242);
+
+      //6. replace the supplied list entries wth country names//
+       let el = document. createElement("li");
+
+       //7. Change the list to a numbered list//
+       el.innerText = nameArray[selectNumber];
+
+       instructions.appendChild(el);
+     };}
+
+     //9. Randomize which fifty countries are dislayed on load//
+     function getRandomIntInclusive(min, max) {
+       min = Math.ceil(min);
+       max = Math.floor(max);
+       return Math.floor(Math.random() * (max - min + 1)) + min;
+     }
+      
+
+
+
+
   </script>
 </body>
 
