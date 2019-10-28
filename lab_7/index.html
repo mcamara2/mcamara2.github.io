@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>Test AJAX page</title>
+  <link rel="stylesheet" type="text/css" href="./lab_styles.css">
+</head>
+
+<body>
+  <div class="container">
+    <div class="wrapper">
+      <div class="header">UMD Bus Routes</div>
+      <button class="button" onclick="loadData()">Load Some JSON</button>
+      <div class="content"></div>
+      <div class="footer"></div>
+    </div>
+  </div>
+  <script>
+    function loadData() {
+      fetch('https://api.umd.io/v0/bus/routes')
+        .then(res => res.json())
+        .then(res => {
+          // you can now work in this area
+          console.log(res);
+          return res;
+        })
+     
+        //.then(data => document.querySelector(".content").innerText = data)
+        
+        .then(data =>
+            {
+            // you can now work in this area
+            console.log(data);
+            //indexing the data//
+            console.log(data[0]);
+            //using query selector to select the content inside of the data//
+            text = document.querySelector(".content");
+            //selecting the text to go into an empty array//
+            text.innerText = '';
+            //creating a for loop in order to loop through each line of data//
+            for (let x = 0; x < data.length; x++){
+              text.innerText += data[x]["route_id"] + " " + data[x]["title"] + "\n";
+            
+            };
+            
+            })
+  
+
+
+
+        }
+        //Randomize all bus routes//
+        .find(function('113',[10]);
+        title = document.querySelector(".header");
+        title.innerText = ".header["route_id"]
+
+
+        }
+    
+    
+        
+        
+
+
+
+  </script>
+</body>
+
+</html>
