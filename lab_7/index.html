@@ -42,21 +42,39 @@
               text.innerText += data[x]["route_id"] + " " + data[x]["title"] + "\n";
             
             };
+            return data 
             
             })
+        .then(data => {
+
+        title = data.find(function(x){
+              return x.route_id === '113'
+              
+
+            });
+          console.log(title)
+          doc = document.querySelector(".header");
+          doc.innerText = 'UMD Bus Route' + title.route_id
+
+        
+
+          
+            
+            
+        })
   
 
 
 
         }
         //Randomize all bus routes//
-        .find(function('113',[10]);
-        title = document.querySelector(".header");
-        title.innerText = ".header["route_id"]
+        //.find(function('113',[10]);
+       // title = document.querySelector(".header");
+        //title.innerText = ".header["route_id"]
 
 
-        }
-    
+        
+   
     
         
         
